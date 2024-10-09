@@ -25,7 +25,7 @@ def init_dashboard(server):
     df_barra5 = pd.read_csv("./dados/Atendimentos ao Longo do Tempo.csv")
     df_linha = pd.read_csv("./dados/Custo ao Longo do Tempo.csv")
     df_linha2 = pd.read_csv("./dados/ProjecaoAbril.csv")
-    df_barra6 = pd.read_csv("./dados/Atendimentos ao Longo do Tempo.csv")
+    df_barra6 = pd.read_csv("./dados/Atendimento x Senioridade.csv")
 
     # Criação de gráficos
     pizza=px.pie(
@@ -141,13 +141,15 @@ def init_dashboard(server):
         df_barra6,
         x="DATA",
         y="ATENDIMENTOS",
-        color="COMPLEXIDADE",
+        color="SENIORIDADE",
         color_discrete_map={
-            'N1': '#22155C',
-            'N2': '#6458F0',
-            'N3': '#6DDCF4'
+                        'Estagiário': '#6DDCF4',
+                        'Junior': '#699AF2',
+                        'Pleno': '#7C3C95',
+                        'Senior': '#22155C',
+                        'Expert': '#000024'
         },
-        title="Atendimentos ao Longo do Tempo"
+        title="Atendimentos SENIORIDADE"
     )
     barra6.update_layout(title_x=0.5)
 
