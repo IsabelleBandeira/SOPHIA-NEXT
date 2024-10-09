@@ -25,6 +25,7 @@ def init_dashboard(server):
     df_barra5 = pd.read_csv("./dados/Atendimentos ao Longo do Tempo.csv")
     df_linha = pd.read_csv("./dados/Custo ao Longo do Tempo.csv")
     df_linha2 = pd.read_csv("./dados/ProjecaoAbril.csv")
+    df_barra6 = pd.read_csv("./dados/Atendimentos ao Longo do Tempo.csv")
 
     # Criação de gráficos
     pizza=px.pie(
@@ -135,6 +136,21 @@ def init_dashboard(server):
     linha2.update_layout(title_x=0.5)
     linha2.update_traces(line_color='#AB9EAA')
 
+    #Grafico de Atendimentos por senioridade ao longo do tempo + previsao
+    barra6 = px.bar(
+        df_barra6,
+        x="DATA",
+        y="ATENDIMENTOS",
+        color="COMPLEXIDADE",
+        color_discrete_map={
+            'N1': '#22155C',
+            'N2': '#6458F0',
+            'N3': '#6DDCF4'
+        },
+        title="Atendimentos ao Longo do Tempo"
+    )
+    barra6.update_layout(title_x=0.5)
+
     # Criação das Divs de cada Gráfico
     div_pizza = html.Div([dcc.Graph(id='pizza', figure=pizza)])
     div_barra1 = html.Div([dcc.Graph(id='barra1', figure=barra1)])
@@ -144,6 +160,7 @@ def init_dashboard(server):
     div_barra5 = html.Div([dcc.Graph(id='barra5', figure=barra5)])
     div_linha = html.Div([dcc.Graph(id='linha', figure=linha)])
     div_linha2 = html.Div([dcc.Graph(id='linha2', figure=linha2)])
+    div_barra6 = html.Div([dcc.Graph(id='barra6', figure=barra6)])
 
     # Criação do Filtro
     dfFiltro = pd.read_csv("./dados/Lista Projetos.csv")
@@ -244,6 +261,9 @@ def init_dashboard(server):
             ]),
             dbc.Row([
                 dbc.Col([div_linha2])
+            ]),
+            dbc.Row([
+                dbc.Col([div_barra6]) #troca cor
             ])
         ])
     ]
