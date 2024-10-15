@@ -149,7 +149,7 @@ def init_dashboard(server):
                         'Senior': '#22155C',
                         'Expert': '#000024'
         },
-        title="Atendimentos SENIORIDADE"
+        title="Atendimentos por Senioridade"
     )
     barra6.update_layout(title_x=0.5)
 
@@ -280,7 +280,8 @@ def init_dashboard(server):
             Output('linha', 'figure'),
             Output('barra2', 'figure'),
             Output('barra5', 'figure'),
-            Output('barra3', 'figure')],
+            Output('barra3', 'figure'),
+            Output('barra6', 'figure')],
             [Input('filtro-dropdown', 'value')]
         )
 
@@ -367,6 +368,22 @@ def init_dashboard(server):
                             )
                     linha.update_layout(title_x=0.5)
                     linha.update_traces(line_color='#a80000')
+
+                    barra6 = px.bar(
+                        df_barra6,
+                        x="DATA",
+                        y="ATENDIMENTOS",
+                        color="SENIORIDADE",
+                        color_discrete_map={
+                                        'Estagiário': '#6DDCF4',
+                                        'Junior': '#699AF2',
+                                        'Pleno': '#7C3C95',
+                                        'Senior': '#22155C',
+                                        'Expert': '#000024'
+                                    },
+                        title="Atendimentos por Senioridade"
+                            )
+                    barra6.update_layout(title_x=0.5)
                 
             else:
                     df_pizza_filtrada = df_pizza.loc[df_pizza['PROJETOS'] == value,:]
@@ -457,7 +474,25 @@ def init_dashboard(server):
                     linha.update_traces(line_color='#a80000')
 
 
-            return pizza, barra4, linha, barra2, barra5, barra3
+                    df_barra6_filtrada = df_barra6.loc[df_barra6['PROJETOS'] == value,:]
+                    barra6 = px.bar(
+                            df_barra6_filtrada,
+                            x="DATA",
+                            y="ATENDIMENTOS",
+                            color="SENIORIDADE",
+                            color_discrete_map={
+                                'Estagiário': '#6DDCF4',
+                                'Junior': '#699AF2',
+                                'Pleno': '#7C3C95',
+                                'Senior': '#22155C',
+                                'Expert': '#000024'
+                            },
+                            title="Atendimentos por Senioridade"
+                        )
+                    barra6.update_layout(title_x=0.5)
+
+
+            return pizza, barra4, linha, barra2, barra5, barra3, barra6
             # pass
 
         @app.callback(
