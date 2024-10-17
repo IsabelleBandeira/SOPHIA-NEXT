@@ -166,7 +166,7 @@ def init_dashboard(server):
                         'Senior': '#22155C',
                         'Expert': '#000024'
         },
-        title="Atendimentos por Senioridade"
+        title="Atendimentos por Senioridade nos Próximos 3 Meses"
     )
     barra7.update_layout(title_x=0.5)
 
@@ -419,7 +419,7 @@ def init_dashboard(server):
                                         'Senior': '#22155C',
                                         'Expert': '#000024'
                                     },
-                        title="Atendimentos por Senioridade"
+                        title="Atendimentos por Senioridade nos Próximos 3 Meses"
                             )
                     barra7.update_layout(title_x=0.5)
                 
@@ -542,7 +542,7 @@ def init_dashboard(server):
                                 'Senior': '#22155C',
                                 'Expert': '#000024'
                             },
-                            title="Atendimentos por Senioridade"
+                            title="Atendimentos por Senioridade nos Próximos 3 Meses"
                         )
                     barra7.update_layout(title_x=0.5)
 
