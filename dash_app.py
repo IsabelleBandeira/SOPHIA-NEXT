@@ -26,6 +26,7 @@ def init_dashboard(server):
     df_linha = pd.read_csv("./dados/Custo ao Longo do Tempo.csv")
     df_linha2 = pd.read_csv("./dados/ProjecaoAbril.csv")
     df_barra6 = pd.read_csv("./dados/Atendimento x Senioridade.csv")
+    df_barra7 = pd.read_csv("./dados/Atendimento_x_Senioridade_PREVISAO.csv")
 
     # Criação de gráficos
     pizza=px.pie(
@@ -153,6 +154,22 @@ def init_dashboard(server):
     )
     barra6.update_layout(title_x=0.5)
 
+    barra7 = px.bar(
+        df_barra7,
+        x="DATA",
+        y="ATENDIMENTOS",
+        color="SENIORIDADE",
+        color_discrete_map={
+                        'Estagiário': '#6DDCF4',
+                        'Junior': '#699AF2',
+                        'Pleno': '#7C3C95',
+                        'Senior': '#22155C',
+                        'Expert': '#000024'
+        },
+        title="Atendimentos por Senioridade"
+    )
+    barra7.update_layout(title_x=0.5)
+
     # Criação das Divs de cada Gráfico
     div_pizza = html.Div([dcc.Graph(id='pizza', figure=pizza)])
     div_barra1 = html.Div([dcc.Graph(id='barra1', figure=barra1)])
@@ -163,6 +180,7 @@ def init_dashboard(server):
     div_linha = html.Div([dcc.Graph(id='linha', figure=linha)])
     div_linha2 = html.Div([dcc.Graph(id='linha2', figure=linha2)])
     div_barra6 = html.Div([dcc.Graph(id='barra6', figure=barra6)])
+    div_barra7 = html.Div([dcc.Graph(id='barra7', figure=barra7)])
 
     # Criação do Filtro
     dfFiltro = pd.read_csv("./dados/Lista Projetos.csv")
@@ -266,6 +284,9 @@ def init_dashboard(server):
             ]),
             dbc.Row([
                 dbc.Col([div_barra6]) #troca cor
+            ]),
+            dbc.Row([
+                dbc.Col([div_barra7]) #troca cor
             ])
         ])
     ]
@@ -281,7 +302,8 @@ def init_dashboard(server):
             Output('barra2', 'figure'),
             Output('barra5', 'figure'),
             Output('barra3', 'figure'),
-            Output('barra6', 'figure')],
+            Output('barra6', 'figure'),
+            Output('barra7', 'figure')],
             [Input('filtro-dropdown', 'value')]
         )
 
@@ -384,6 +406,22 @@ def init_dashboard(server):
                         title="Atendimentos por Senioridade"
                             )
                     barra6.update_layout(title_x=0.5)
+
+                    barra7 = px.bar(
+                        df_barra7,
+                        x="DATA",
+                        y="ATENDIMENTOS",
+                        color="SENIORIDADE",
+                        color_discrete_map={
+                                        'Estagiário': '#6DDCF4',
+                                        'Junior': '#699AF2',
+                                        'Pleno': '#7C3C95',
+                                        'Senior': '#22155C',
+                                        'Expert': '#000024'
+                                    },
+                        title="Atendimentos por Senioridade"
+                            )
+                    barra7.update_layout(title_x=0.5)
                 
             else:
                     df_pizza_filtrada = df_pizza.loc[df_pizza['PROJETOS'] == value,:]
@@ -491,8 +529,25 @@ def init_dashboard(server):
                         )
                     barra6.update_layout(title_x=0.5)
 
+                    df_barra7_filtrada = df_barra7.loc[df_barra7['PROJETOS'] == value,:]
+                    barra7 = px.bar(
+                            df_barra7_filtrada,
+                            x="DATA",
+                            y="ATENDIMENTOS",
+                            color="SENIORIDADE",
+                            color_discrete_map={
+                                'Estagiário': '#6DDCF4',
+                                'Junior': '#699AF2',
+                                'Pleno': '#7C3C95',
+                                'Senior': '#22155C',
+                                'Expert': '#000024'
+                            },
+                            title="Atendimentos por Senioridade"
+                        )
+                    barra7.update_layout(title_x=0.5)
 
-            return pizza, barra4, linha, barra2, barra5, barra3, barra6
+
+            return pizza, barra4, linha, barra2, barra5, barra3, barra6, barra7
             # pass
 
         @app.callback(
