@@ -266,7 +266,7 @@ def init_dashboard(server):
                 dbc.Col([div_pizza], md=4),
                 dbc.Col(html.Button(html.Img(src=r'assets/icons8-mais-60.png', 
                                  style={'width': '20px'}, 
-                                 alt='image'), id="icon-1", style={'border':'none', 'background-color':'white'}), md=1),
+                                 alt='image'), id="icon-1", style={'border':'none', 'background-color':'white'}), md=1, style={'flex-grow': '0', 'max-width': '20px'}),
                 dbc.Popover(
                             "popover_children 2 taking sp[ace to see how it vheaves hi dsorry wrong word behaves***]",
                             target="icon-1",
@@ -276,7 +276,7 @@ def init_dashboard(server):
                 dbc.Col([div_barra4], md=6),
                 dbc.Col(html.Button(html.Img(src=r'assets/icons8-mais-60.png', 
                                  style={'width': '20px'}, 
-                                 alt='image'), id="icon-2", style={'border':'none', 'background-color':'white'}), md=1),
+                                 alt='image'), id="icon-2", style={'border':'none', 'background-color':'white'}), md=1, style={'flex-grow': '0', 'max-width': '20px'}),
                 dbc.Popover(
                             "popover_children 2 taking sp[ace to see how it vheaves hi dsorry wrong word behaves***]",
                             target="icon-2",
@@ -288,7 +288,7 @@ def init_dashboard(server):
                 dbc.Col([div_barra5]),
                 dbc.Col(html.Button(html.Img(src=r'assets/icons8-mais-60.png', 
                                  style={'width': '20px'}, 
-                                 alt='image'), id="icon-3", style={'border':'none', 'background-color':'white'}), md=1),
+                                 alt='image'), id="icon-3", style={'border':'none', 'background-color':'white'}), md=1, style={'flex-grow': '0', 'max-width': '20px'}),
                 dbc.Popover(
                             "popover_children 2 taking sp[ace to see how it vheaves hi dsorry wrong word behaves***]",
                             target="icon-3",
@@ -300,7 +300,7 @@ def init_dashboard(server):
                 dbc.Col([div_barra1]),
                 dbc.Col(html.Button(html.Img(src=r'assets/icons8-mais-60.png', 
                                  style={'width': '20px'}, 
-                                 alt='image'), id="icon-4", style={'border':'none', 'background-color':'white'}), md=1),
+                                 alt='image'), id="icon-4", style={'border':'none', 'background-color':'white'}), md=1, style={'flex-grow': '0', 'max-width': '20px'}),
                 dbc.Popover(
                             "popover_children 2 taking sp[ace to see how it vheaves hi dsorry wrong word behaves***]",
                             target="icon-4",
@@ -312,7 +312,7 @@ def init_dashboard(server):
                 dbc.Col([div_barra2], md=5),
                 dbc.Col(html.Button(html.Img(src=r'assets/icons8-mais-60.png', 
                                  style={'width': '20px'}, 
-                                 alt='image'), id="icon-9", style={'border':'none', 'background-color':'white'}), md=1),
+                                 alt='image'), id="icon-9", style={'border':'none', 'background-color':'white'}), md=1, style={'flex-grow': '0', 'max-width': '20px'}),
                 dbc.Popover(
                             "popover_children 2 taking sp[ace to see how it vheaves hi dsorry wrong word behaves***]",
                             target="icon-9",
@@ -322,7 +322,7 @@ def init_dashboard(server):
                 dbc.Col([div_barra3], md=5),
                 dbc.Col(html.Button(html.Img(src=r'assets/icons8-mais-60.png', 
                                  style={'width': '20px'}, 
-                                 alt='image'), id="icon-10", style={'border':'none', 'background-color':'white'}), md=1),
+                                 alt='image'), id="icon-10", style={'border':'none', 'background-color':'white'}), md=1, style={'flex-grow': '0', 'max-width': '20px'}),
                 dbc.Popover(
                             "popover_children 2 taking sp[ace to see how it vheaves hi dsorry wrong word behaves***]",
                             target="icon-10",
@@ -334,7 +334,7 @@ def init_dashboard(server):
                 dbc.Col([div_linha]),
                 dbc.Col(html.Button(html.Img(src=r'assets/icons8-mais-60.png', 
                                  style={'width': '20px'}, 
-                                 alt='image'), id="icon-5", style={'border':'none', 'background-color':'white'}), md=1),
+                                 alt='image'), id="icon-5", style={'border':'none', 'background-color':'white'}), md=1, style={'flex-grow': '0', 'max-width': '20px'}),
                 dbc.Popover(
                             "popover_children 2 taking sp[ace to see how it vheaves hi dsorry wrong word behaves***]",
                             target="icon-5",
@@ -346,7 +346,7 @@ def init_dashboard(server):
                 dbc.Col([div_linha2]),
                 dbc.Col(html.Button(html.Img(src=r'assets/icons8-mais-60.png', 
                                  style={'width': '20px'}, 
-                                 alt='image'), id="icon-6", style={'border':'none', 'background-color':'white'}), md=1),
+                                 alt='image'), id="icon-6", style={'border':'none', 'background-color':'white'}), md=1, style={'flex-grow': '0', 'max-width': '20px'}),
                 dbc.Popover(
                             "popover_children 2 taking sp[ace to see how it vheaves hi dsorry wrong word behaves***]",
                             target="icon-6",
@@ -358,7 +358,7 @@ def init_dashboard(server):
                 dbc.Col([div_barra6]),
                 dbc.Col(html.Button(html.Img(src=r'assets/icons8-mais-60.png', 
                                  style={'width': '20px'}, 
-                                 alt='image'), id="icon-7", style={'border':'none', 'background-color':'white'}), md=1),
+                                 alt='image'), id="icon-7", style={'border':'none', 'background-color':'white'}), md=1, style={'flex-grow': '0', 'max-width': '20px'}),
                 dbc.Popover(
                             "popover_children 2 taking sp[ace to see how it vheaves hi dsorry wrong word behaves***]",
                             target="icon-7",
@@ -370,7 +370,7 @@ def init_dashboard(server):
                 dbc.Col([div_barra7]),
                 dbc.Col(html.Button(html.Img(src=r'assets/icons8-mais-60.png', 
                                  style={'width': '20px'}, 
-                                 alt='image'), id="icon-8", style={'border':'none', 'background-color':'white'}), md=1),
+                                 alt='image'), id="icon-8", style={'border':'none', 'background-color':'white'}), md=1, style={'flex-grow': '0', 'max-width': '20px'}),
                 dbc.Popover(
                             "popover_children 2 taking sp[ace to see how it vheaves hi dsorry wrong word behaves***]",
                             target="icon-8",
