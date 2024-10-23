@@ -396,6 +396,18 @@ def init_dashboard(server):
                             body=True,
                             trigger="legacy",
                 ),
+            ]),
+            dbc.Row([
+                dbc.Col([div_barra8]),
+                dbc.Col(html.Button(html.Img(src=r'assets/icons8-mais-60.png', 
+                                 style={'width': '20px'}, 
+                                 alt='image'), id="icon-11", style={'border':'none', 'background-color':'white'}), md=1, style={'flex-grow': '0', 'max-width': '20px'}),
+                dbc.Popover(
+                            "Analise SOPHIA",
+                            target="icon-11",
+                            body=True,
+                            trigger="legacy",
+                ),
             ])
         ])
     ]
@@ -412,7 +424,8 @@ def init_dashboard(server):
             Output('barra5', 'figure'),
             Output('barra3', 'figure'),
             Output('barra6', 'figure'),
-            Output('barra7', 'figure')],
+            Output('barra7', 'figure'),
+            Output('barra8','figure')],
             [Input('filtro-dropdown', 'value')]
         )
 
@@ -531,6 +544,22 @@ def init_dashboard(server):
                         title="Projeção dos Atendimentos por Senioridade nos Próximos 3 Meses"
                             )
                     barra7.update_layout(title_x=0.5)
+
+                    barra8 = px.bar(
+                        df_barra8,
+                        x="DATA",
+                        y="ATENDIMENTOS",
+                        color="SENIORIDADE",
+                        color_discrete_map={
+                                        'Estagiário': '#6DDCF4',
+                                        'Junior': '#699AF2',
+                                        'Pleno': '#7C3C95',
+                                        'Senior': '#22155C',
+                                        'Expert': '#000024'
+                                    },
+                        title="Projeção dos Atendimentos por Senioridade nos Próximos 3 Meses"
+                            )
+                    barra8.update_layout(title_x=0.5)
                 
             else:
                     df_pizza_filtrada = df_pizza.loc[df_pizza['PROJETOS'] == value,:]
@@ -655,8 +684,25 @@ def init_dashboard(server):
                         )
                     barra7.update_layout(title_x=0.5)
 
+                    df_barra8_filtrada = df_barra8.loc[df_barra8['PROJETOS'] == value,:]
+                    barra8 = px.bar(
+                            df_barra8_filtrada,
+                            x="DATA",
+                            y="ATENDIMENTOS",
+                            color="SENIORIDADE",
+                            color_discrete_map={
+                                'Estagiário': '#6DDCF4',
+                                'Junior': '#699AF2',
+                                'Pleno': '#7C3C95',
+                                'Senior': '#22155C',
+                                'Expert': '#000024'
+                            },
+                            title="Projeção dos Atendimentos por Senioridade nos Próximos 3 Meses"
+                        )
+                    barra8.update_layout(title_x=0.5)
 
-            return pizza, barra4, linha, barra2, barra5, barra3, barra6, barra7
+
+            return pizza, barra4, linha, barra2, barra5, barra3, barra6, barra7, barra8
             # pass
 
         @app.callback(
