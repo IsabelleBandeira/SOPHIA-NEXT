@@ -56,7 +56,7 @@ def init_dashboard(server):
                     'Senior': '#22155C',
                     'Expert': '#000024',
         },
-        title="Consultores Ociosos por Senioridade",
+        title="Senioridade de Consultores Ociosos nos últimos 3 meses",
         text_auto=True
     )
     barra1.update_layout(title_x=0.5)
@@ -73,7 +73,7 @@ def init_dashboard(server):
                     'Senior': '#22155C',
                     'Expert': '#000024',
         },
-        title="Contrato x Demanda",
+        title="Contratado x Atendimentos",
         #text_auto=True
     )
     barra2.update_layout(title_x=0.5)
@@ -87,7 +87,7 @@ def init_dashboard(server):
                     'Custo Atendimento': '#a80000',
                     'Valor do Contrato': '#59EE6A'
         },
-        title="Custo x Valor do Contrato em R$"
+        title="Custo dos Atendimentos x Valor do Contrato em R$"
     )
     barra3.update_layout(title_x=0.5)
 
@@ -101,7 +101,7 @@ def init_dashboard(server):
                         'N2': '#6458F0',
                         'N3': '#6DDCF4'
         },
-        title="Consultores x Complexidade de Atendimentos"
+        title="Senioridade dos Consultores x Complexidade dos Atendimentos"
         #text_auto=True
     )
     barra4.update_layout(title_x=0.5)
@@ -116,7 +116,7 @@ def init_dashboard(server):
                         'N2': '#6458F0',
                         'N3': '#6DDCF4'
         },
-        title="Atendimentos ao Longo do Tempo"
+        title="Complexidade dos Atendimentos ao Longo do Tempo"
     )
     barra5.update_layout(title_x=0.5)
 
@@ -124,7 +124,7 @@ def init_dashboard(server):
         df_linha,
         x="DATA",
         y="CUSTO",
-        title="Custo ao Longo do Tempo",
+        title="Custo dos Atendimentos ao Longo do Tempo",
     )
     linha.update_layout(title_x=0.5)
     linha.update_traces(line_color='#a80000')
@@ -133,7 +133,7 @@ def init_dashboard(server):
         df_linha2,
         x="DATA",
         y="CUSTO",
-        title="Projeção do Custo de Abril",
+        title="Projeção do Custo dos Atendimentos de Abril",
     )
     linha2.update_layout(title_x=0.5)
     linha2.update_traces(line_color='#AB9EAA')
@@ -167,7 +167,7 @@ def init_dashboard(server):
                         'Senior': '#22155C',
                         'Expert': '#000024'
         },
-        title="Atendimentos por Senioridade nos Próximos 3 Meses"
+        title="Projeção dos Atendimentos por Senioridade nos Próximos 3 Meses"
     )
     barra7.update_layout(title_x=0.5)
 
@@ -284,20 +284,20 @@ def init_dashboard(server):
             dbc.Row([
                 dbc.Col([div_pizza], md=4),
                 dbc.Col(html.Button(html.Img(src=r'assets/icons8-mais-60.png', 
-                                 style={'width': '20px'}, 
+                                 style={'width': '20px', 'margin-left':'-20px'}, 
                                  alt='image'), id="icon-1", style={'border':'none', 'background-color':'white'}), md=1, style={'flex-grow': '0', 'max-width': '20px'}),
                 dbc.Popover(
-                            "popover_children 2 taking sp[ace to see how it vheaves hi dsorry wrong word behaves***]",
+                            "Nesse gráfico de pizza baseado nos atendimentos dos meses de Janeiro a Março de 2024, observa-se que a maioria dos atendimentos está concentrada em tarefas de menor complexidade (N1), com destaque para o Projeto2-Funcional (230 atendimentos) e Projeto1-Basis (225 atendimentos). No entanto, em termos de maior complexidade (N3), o Projeto2-Funcional também lidera, com 156 atendimentos, enquanto o Projeto1-Funcional soma 112 atendimentos nessa categoria.",
                             target="icon-1",
                             body=True,
                             trigger="legacy",
                 ),
-                dbc.Col([div_barra4], md=6),
+                dbc.Col([div_barra4], md=7),
                 dbc.Col(html.Button(html.Img(src=r'assets/icons8-mais-60.png', 
                                  style={'width': '20px'}, 
                                  alt='image'), id="icon-2", style={'border':'none', 'background-color':'white'}), md=1, style={'flex-grow': '0', 'max-width': '20px'}),
                 dbc.Popover(
-                            "popover_children 2 taking sp[ace to see how it vheaves hi dsorry wrong word behaves***]",
+                            "Nesse gráfico de barras baseado nos atendimentos dos meses de Janeiro a Março de 2024, observa-se que Juniores e Estagiários são responsáveis pela maioria dos atendimentos de complexidade baixa (N1), especialmente no Projeto1-Basis e Projeto2-Funcional. No entanto, Seniores e Experts ganham destaque em tarefas mais complexas (N3), com o Projeto2-Funcional apresentando a maior carga de atendimentos N3, somando 91 atendimentos com profissionais senior e 18 com experts.",
                             target="icon-2",
                             body=True,
                             trigger="legacy",
@@ -309,7 +309,7 @@ def init_dashboard(server):
                                  style={'width': '20px'}, 
                                  alt='image'), id="icon-3", style={'border':'none', 'background-color':'white'}), md=1, style={'flex-grow': '0', 'max-width': '20px'}),
                 dbc.Popover(
-                            "popover_children 2 taking sp[ace to see how it vheaves hi dsorry wrong word behaves***]",
+                            "Os projetos Projeto1-Basis e Projeto1-Funcional têm atendimentos constantes de complexidade N1, com picos no início e fim de janeiro e fevereiro. O Projeto2-Funcional também apresenta uma frequência alta de atendimentos N1 no mesmo período. Atendimentos com complexidade N2 são mais frequentes nos últimos dias de fevereiro e início de março, dispersos em várias datas.",
                             target="icon-3",
                             body=True,
                             trigger="legacy",
@@ -321,7 +321,7 @@ def init_dashboard(server):
                                  style={'width': '20px'}, 
                                  alt='image'), id="icon-4", style={'border':'none', 'background-color':'white'}), md=1, style={'flex-grow': '0', 'max-width': '20px'}),
                 dbc.Popover(
-                            "popover_children 2 taking sp[ace to see how it vheaves hi dsorry wrong word behaves***]",
+                            "Nos meses de Janeiro a Março, o número de consultores ociosos representou um total de 24 profissionais distribuídos entre diferentes níveis de senioridade. A maior parte dos profissionais sem demandas alocadas concentrou-se na categoria sênior, representando mais da metade do total. Os níveis júnior e pleno seguiram em números mais equilibrados, enquanto estagiários e experts formaram as menores categorias.",
                             target="icon-4",
                             body=True,
                             trigger="legacy",
@@ -330,10 +330,10 @@ def init_dashboard(server):
             dbc.Row([
                 dbc.Col([div_barra2], md=5),
                 dbc.Col(html.Button(html.Img(src=r'assets/icons8-mais-60.png', 
-                                 style={'width': '20px'}, 
+                                 style={'width': '20px', 'margin-left':'-20px'}, 
                                  alt='image'), id="icon-9", style={'border':'none', 'background-color':'white'}), md=1, style={'flex-grow': '0', 'max-width': '20px'}),
                 dbc.Popover(
-                            "popover_children 2 taking sp[ace to see how it vheaves hi dsorry wrong word behaves***]",
+                            "O gráfico Contratado x Atendimentos revela discrepâncias significativas na senioridade dos consultores contratados em relação aos que realmente atuaram nas demandas de cada projeto no período de Janeiro a Março de 2024. Por exemplo, no Projeto 1-Funcional, enquanto 40% dos consultores contratados eram Plenos, apenas 23,26% deles atuaram nas demandas. Da mesma forma, no Projeto 2-Funcional, 50% dos contratados eram Plenos, mas apenas 22,8% estavam presentes nas demandas. Essas diferenças indicam uma subutilização das competências mais avançadas nos projetos, sugerindo uma necessidade de reavaliação no processo de alocação de consultores.",
                             target="icon-9",
                             body=True,
                             trigger="legacy",
@@ -343,7 +343,7 @@ def init_dashboard(server):
                                  style={'width': '20px'}, 
                                  alt='image'), id="icon-10", style={'border':'none', 'background-color':'white'}), md=1, style={'flex-grow': '0', 'max-width': '20px'}),
                 dbc.Popover(
-                            "popover_children 2 taking sp[ace to see how it vheaves hi dsorry wrong word behaves***]",
+                            "Nos meses de Janeiro a Março de 2024, observa-se uma discrepância significativa entre os custos de atendimento e os valores dos contratos em cada projeto. Por exemplo, no Projeto 1-Funcional, o custo de atendimento é de 71.703, enquanto o valor do contrato é de 50.400, resultando em uma diferença negativa de 21.303. Essa situação indica que os custos superam o valor acordado, sugerindo a necessidade de ajustes nos orçamentos e na gestão dos recursos. Além disso, no Projeto 2-Funcional, o custo de atendimento é de 53.782, contra um valor de contrato de 58.800, evidenciando uma margem de lucro mais saudável, mas que ainda requer uma análise detalhada para otimização.",
                             target="icon-10",
                             body=True,
                             trigger="legacy",
@@ -355,7 +355,7 @@ def init_dashboard(server):
                                  style={'width': '20px'}, 
                                  alt='image'), id="icon-5", style={'border':'none', 'background-color':'white'}), md=1, style={'flex-grow': '0', 'max-width': '20px'}),
                 dbc.Popover(
-                            "popover_children 2 taking sp[ace to see how it vheaves hi dsorry wrong word behaves***]",
+                            "O gráfico Custos ao Longo do Tempo revela variações significativas nos gastos. No Projeto 1-Funcional, os custos aumentaram de 1.330 a 2.275 durante o mês de janeiro a março, evidenciando um crescimento contínuo. Por outro lado, o Projeto 1-Basis apresenta custos mais baixos, com flutuações que vão de 6 a 242, indicando um padrão de gastos menos consistente. O Projeto 2-Funcional, por sua vez, também apresenta custos crescentes, atingindo 2.208, o que sugere um aumento na demanda ou complexidade dos serviços prestados ao longo do período analisado.",
                             target="icon-5",
                             body=True,
                             trigger="legacy",
@@ -367,7 +367,7 @@ def init_dashboard(server):
                                  style={'width': '20px'}, 
                                  alt='image'), id="icon-6", style={'border':'none', 'background-color':'white'}), md=1, style={'flex-grow': '0', 'max-width': '20px'}),
                 dbc.Popover(
-                            "popover_children 2 taking sp[ace to see how it vheaves hi dsorry wrong word behaves***]",
+                            "A predição dos dados de custos de Abril de 2024 indica uma variação significativa entre as horas e valores gastos por consultor. Os valores totais de R$ 10.417,90, R$ 5.691,80 e R$ 9.119,00, com respectivos custos por hora de R$ 71,69, R$ 92,01 e R$ 73,25, refletem uma distribuição desigual de recursos. Isso sugere que a alocação de consultores pode impactar a eficiência dos projetos, exigindo uma revisão estratégica para otimizar a utilização de recursos e reduzir despesas. A discrepância nos custos por hora também pode refletir diferenças na senioridade e experiência dos consultores alocados.",
                             target="icon-6",
                             body=True,
                             trigger="legacy",
@@ -379,7 +379,7 @@ def init_dashboard(server):
                                  style={'width': '20px'}, 
                                  alt='image'), id="icon-7", style={'border':'none', 'background-color':'white'}), md=1, style={'flex-grow': '0', 'max-width': '20px'}),
                 dbc.Popover(
-                            "popover_children 2 taking sp[ace to see how it vheaves hi dsorry wrong word behaves***]",
+                            "A análise dos atendimentos realizados por diferentes níveis de senioridade entre janeiro e abril de 2024 destaca uma distribuição desigual na alocação de recursos. Os estagiários apresentaram o maior número de atendimentos, com um pico de 15 atendimentos em um único dia, refletindo uma dependência significativa de profissionais menos experientes em projetos funcionais. Por outro lado, os consultores seniores, embora menos frequentemente alocados, participaram ativamente em projetos-chave, o que sugere a necessidade de um equilíbrio na distribuição de tarefas para maximizar a eficiência e a qualidade do trabalho. Essa dinâmica entre as senioridades pode impactar a entrega dos projetos, evidenciando a importância de uma gestão estratégica de recursos humanos.",
                             target="icon-7",
                             body=True,
                             trigger="legacy",
@@ -391,7 +391,7 @@ def init_dashboard(server):
                                  style={'width': '20px'}, 
                                  alt='image'), id="icon-8", style={'border':'none', 'background-color':'white'}), md=1, style={'flex-grow': '0', 'max-width': '20px'}),
                 dbc.Popover(
-                            "popover_children 2 taking sp[ace to see how it vheaves hi dsorry wrong word behaves***]",
+                            "A análise dos dados de atendimentos por senioridade nos projetos prediz uma dependência significativa de Estagiários e Juniores, que em várias datas superarão os atendimentos dos profissionais mais experientes. Em particular, o volume de atendimentos dos estagiários nos projetos se destaca, especialmente em datas como 4 de abril e 2 de junho, onde poderão atingir números elevados. Apesar de Seniores e Plenos realizarem um número considerável de atendimentos, sua atuação pode ser menos frequente, sugerindo que os projetos podem estar se apoiando em uma força de trabalho menos experiente. Essa tendência pode levantar questões sobre a necessidade de um equilíbrio mais adequado entre as diferentes senioridades para garantir a qualidade e a eficiência nas entregas.",
                             target="icon-8",
                             body=True,
                             trigger="legacy",
@@ -443,7 +443,7 @@ def init_dashboard(server):
                                                 'N2': '#6458F0',
                                                 'N3': '#6DDCF4'
                                 },
-                                title="Consultores x Complexidade de Atendimentos"
+                                title="Senioridade dos Consultores x Complexidade dos Atendimentos"
                                 #text_auto=True
                             )
                     barra4.update_layout(title_x=0.5)
@@ -458,7 +458,7 @@ def init_dashboard(server):
                                                 'N2': '#6458F0',
                                                 'N3': '#6DDCF4'
                                 },
-                                title="Atendimentos ao Longo do Tempo"
+                                title="Complexidade dos Atendimentos ao Longo do Tempo"
                             )
                     barra5.update_layout(title_x=0.5)
                 
@@ -474,7 +474,7 @@ def init_dashboard(server):
                                             'Senior': '#22155C',
                                             'Expert': '#000024',
                                 },
-                                title="Contrato x Demanda",
+                                title="Contratado x Atendimentos",
                                 #text_auto=True
                             )
                     barra2.update_layout(title_x=0.5)
@@ -486,7 +486,7 @@ def init_dashboard(server):
                             y="VALOR",
                             color="TIPO",
                             color_discrete_map={'Custo Atendimento': '#a80000','Valor do Contrato': '#59EE6A'},
-                            title="Custo x Valor do Contrato em R$"
+                            title="Custo dos Atendimentos x Valor do Contrato em R$"
                         )
                     barra3.update_layout(title_x=0.5)
 
@@ -495,7 +495,7 @@ def init_dashboard(server):
                                 df_linha,
                                 x="DATA",
                                 y="CUSTO",
-                                title="Custo ao Longo do Tempo",
+                                title="Custo dos Atendimentos ao Longo do Tempo",
                             )
                     linha.update_layout(title_x=0.5)
                     linha.update_traces(line_color='#a80000')
@@ -528,7 +528,7 @@ def init_dashboard(server):
                                         'Senior': '#22155C',
                                         'Expert': '#000024'
                                     },
-                        title="Atendimentos por Senioridade nos Próximos 3 Meses"
+                        title="Projeção dos Atendimentos por Senioridade nos Próximos 3 Meses"
                             )
                     barra7.update_layout(title_x=0.5)
                 
@@ -559,7 +559,7 @@ def init_dashboard(server):
                                                 'N2': '#6458F0',
                                                 'N3': '#6DDCF4'
                                 },
-                                title="Consultores x Complexidade de Atendimentos"
+                                title="Senioridade dos Consultores x Complexidade dos Atendimentos"
                                 #text_auto=True
                             )
                     barra4.update_layout(title_x=0.5)
@@ -575,7 +575,7 @@ def init_dashboard(server):
                                                 'N2': '#6458F0',
                                                 'N3': '#6DDCF4'
                                 },
-                                title="Atendimentos ao Longo do Tempo"
+                                title="Complexidade dos Atendimentos ao Longo do Tempo"
                             )
                     barra5.update_layout(title_x=0.5)
                 
@@ -592,7 +592,7 @@ def init_dashboard(server):
                                             'Senior': '#22155C',
                                             'Expert': '#000024',
                                 },
-                                title="Contrato x Demanda",
+                                title="Contratado x Atendimentos",
                                 #text_auto=True
                             )
                     barra2.update_layout(title_x=0.5)
@@ -605,7 +605,7 @@ def init_dashboard(server):
                             y="VALOR",
                             color="TIPO",
                             color_discrete_map={'Custo Atendimento': '#a80000','Valor do Contrato': '#59EE6A'},
-                            title="Custo x Valor do Contrato em R$"
+                            title="Custo dos Atendimentos x Valor do Contrato em R$"
                         )
                     barra3.update_layout(title_x=0.5)
 
@@ -615,7 +615,7 @@ def init_dashboard(server):
                                 df_linha_filtrada,
                                 x="DATA",
                                 y="CUSTO",
-                                title="Custo ao Longo do Tempo",
+                                title="Custo dos Atendimentos ao Longo do Tempo",
                             )
                     linha.update_layout(title_x=0.5)
                     linha.update_traces(line_color='#a80000')
@@ -651,7 +651,7 @@ def init_dashboard(server):
                                 'Senior': '#22155C',
                                 'Expert': '#000024'
                             },
-                            title="Atendimentos por Senioridade nos Próximos 3 Meses"
+                            title="Projeção dos Atendimentos por Senioridade nos Próximos 3 Meses"
                         )
                     barra7.update_layout(title_x=0.5)
 
