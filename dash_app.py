@@ -27,6 +27,7 @@ def init_dashboard(server):
     df_linha2 = pd.read_csv("./dados/ProjecaoAbril.csv")
     df_barra6 = pd.read_csv("./dados/Atendimento x Senioridade.csv")
     df_barra7 = pd.read_csv("./dados/Atendimento_x_Senioridade_PREVISAO.csv")
+    df_barra8 = pd.read_csv("./dados/ConsultorPorProjeto.csv")
 
     # Criação de gráficos
     pizza=px.pie(
@@ -170,6 +171,23 @@ def init_dashboard(server):
     )
     barra7.update_layout(title_x=0.5)
 
+    barra8 = px.bar(
+        df_barra8,
+        x="PROJETO",
+        y="CONSULTOR",
+        color="Senioridade CONSULTOR",
+        color_discrete_map={
+                        'Estagiário': '#6DDCF4',
+                        'Júnior': '#699AF2',
+                        'Pleno': '#7C3C95',
+                        'Sênior': '#22155C',
+                        'Expert': '#000024'
+        },
+        title="Consultores por Projeto"
+        #text_auto=True
+    )
+    barra8.update_layout(title_x=0.5)
+
     # Criação das Divs de cada Gráfico
     div_pizza = html.Div([dcc.Graph(id='pizza', figure=pizza)])
     div_barra1 = html.Div([dcc.Graph(id='barra1', figure=barra1)])
@@ -181,6 +199,7 @@ def init_dashboard(server):
     div_linha2 = html.Div([dcc.Graph(id='linha2', figure=linha2)])
     div_barra6 = html.Div([dcc.Graph(id='barra6', figure=barra6)])
     div_barra7 = html.Div([dcc.Graph(id='barra7', figure=barra7)])
+    div_barra8 = html.Div([dcc.Graph(id='barra8', figure=barra8)])
 
     # Criação do Filtro
     dfFiltro = pd.read_csv("./dados/Lista Projetos.csv")
