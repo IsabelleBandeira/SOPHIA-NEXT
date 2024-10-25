@@ -173,9 +173,9 @@ def init_dashboard(server):
 
     barra8 = px.bar(
         df_barra8,
-        x="PROJETO",
+        x="PROJETOS",
         y="CONSULTOR",
-        color="Senioridade CONSULTOR",
+        color="Senioridade",
         color_discrete_map={
                         'Estagiário': '#6DDCF4',
                         'Júnior': '#699AF2',
