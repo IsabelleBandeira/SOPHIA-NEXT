@@ -23,11 +23,11 @@ def init_dashboard(server):
     df_barra3 = pd.read_csv("./dados/Custo x Venda.csv")
     df_barra4 = pd.read_csv("./dados/Consultores x Complexidade de Atendimentos.csv")
     df_barra5 = pd.read_csv("./dados/Atendimentos ao Longo do Tempo.csv")
-    df_linha = pd.read_csv("./dados/Custo ao Longo do Tempo.csv")
+    df_linha = pd.read_csv("./dados/Custo ao Longo do Tempo com projecao.csv")
     df_linha2 = pd.read_csv("./dados/ProjecaoAbril.csv")
     df_barra6 = pd.read_csv("./dados/Atendimento x Senioridade.csv")
     df_barra7 = pd.read_csv("./dados/Atendimento_x_Senioridade_PREVISAO.csv")
-    df_barra8 = pd.read_csv("./dados/ConsultorPorProjeto.csv")
+    df_barra8 = pd.read_csv("./dados/Equipe por projeto.csv")
 
     # Criação de gráficos
     pizza=px.pie(
@@ -120,14 +120,14 @@ def init_dashboard(server):
     )
     barra5.update_layout(title_x=0.5)
 
-    linha = px.line(
-        df_linha,
-        x="DATA",
-        y="CUSTO",
-        title="Custo dos Atendimentos ao Longo do Tempo",
-    )
-    linha.update_layout(title_x=0.5)
-    linha.update_traces(line_color='#a80000')
+    # linha = px.line(
+    #     df_linha,
+    #     x="DATA",
+    #     y="CUSTO",
+    #     title="Custo dos Atendimentos ao Longo do Tempo",
+    # )
+    # linha.update_layout(title_x=0.5)
+    # linha.update_traces(line_color='#a80000')
 
     linha2 = px.line(
         df_linha2,
@@ -137,6 +137,15 @@ def init_dashboard(server):
     )
     linha2.update_layout(title_x=0.5)
     linha2.update_traces(line_color='#AB9EAA')
+
+    linha = px.line(
+        df_linha,
+        x="DATA",
+        y="CUSTO",
+        title="Custo ao Longo do Tempo",
+        color="TIPO"
+    )
+    linha.update_layout(title_x=0.5)
 
     #Grafico de Atendimentos por senioridade ao longo do tempo + previsao
     barra6 = px.bar(
@@ -174,16 +183,16 @@ def init_dashboard(server):
     barra8 = px.bar(
         df_barra8,
         x="PROJETOS",
-        y="CONSULTOR",
-        color="Senioridade",
+        y="EQUIPE",
+        color="SENIORIDADE",
         color_discrete_map={
                         'Estagiário': '#6DDCF4',
-                        'Júnior': '#699AF2',
+                        'Junior': '#699AF2',
                         'Pleno': '#7C3C95',
-                        'Sênior': '#22155C',
+                        'Senior': '#22155C',
                         'Expert': '#000024'
         },
-        title="Consultores por Projeto"
+        title="Equipe por Projeto"
         #text_auto=True
     )
     barra8.update_layout(title_x=0.5)
@@ -505,13 +514,13 @@ def init_dashboard(server):
 
 
                     linha = px.line(
-                                df_linha,
-                                x="DATA",
-                                y="CUSTO",
-                                title="Custo dos Atendimentos ao Longo do Tempo",
-                            )
+                        df_linha,
+                        x="DATA",
+                        y="CUSTO",
+                        title="Custo ao Longo do Tempo",
+                        color="TIPO"
+                    )
                     linha.update_layout(title_x=0.5)
-                    linha.update_traces(line_color='#a80000')
 
                     barra6 = px.bar(
                         df_barra6,
@@ -545,21 +554,21 @@ def init_dashboard(server):
                             )
                     barra7.update_layout(title_x=0.5)
 
-                    barra8 = px.bar(
-                        df_barra8,
-                        x="DATA",
-                        y="ATENDIMENTOS",
-                        color="SENIORIDADE",
-                        color_discrete_map={
-                                        'Estagiário': '#6DDCF4',
-                                        'Junior': '#699AF2',
-                                        'Pleno': '#7C3C95',
-                                        'Senior': '#22155C',
-                                        'Expert': '#000024'
-                                    },
-                        title="Projeção dos Atendimentos por Senioridade nos Próximos 3 Meses"
-                            )
-                    barra8.update_layout(title_x=0.5)
+                    # barra8 = px.bar(
+                    #     df_barra8,
+                    #     x="PROJETOS",
+                    #     y="CONSULTOR",
+                    #     color="Senioridade",
+                    #     color_discrete_map={
+                    #                     'Estagiário': '#6DDCF4',
+                    #                     'Junior': '#699AF2',
+                    #                     'Pleno': '#7C3C95',
+                    #                     'Senior': '#22155C',
+                    #                     'Expert': '#000024'
+                    #                 },
+                    #     title="Consultores por Projeto"
+                    # )
+                    # barra8.update_layout(title_x=0.5)
                 
             else:
                     df_pizza_filtrada = df_pizza.loc[df_pizza['PROJETOS'] == value,:]
@@ -641,14 +650,13 @@ def init_dashboard(server):
 
                     df_linha_filtrada = df_linha.loc[df_linha['PROJETOS'] == value,:]
                     linha = px.line(
-                                df_linha_filtrada,
-                                x="DATA",
-                                y="CUSTO",
-                                title="Custo dos Atendimentos ao Longo do Tempo",
-                            )
+                        df_linha_filtrada,
+                        x="DATA",
+                        y="CUSTO",
+                        title="Custo ao Longo do Tempo",
+                        color="TIPO"
+                    )
                     linha.update_layout(title_x=0.5)
-                    linha.update_traces(line_color='#a80000')
-
 
                     df_barra6_filtrada = df_barra6.loc[df_barra6['PROJETOS'] == value,:]
                     barra6 = px.bar(
@@ -684,22 +692,22 @@ def init_dashboard(server):
                         )
                     barra7.update_layout(title_x=0.5)
 
-                    df_barra8_filtrada = df_barra8.loc[df_barra8['PROJETOS'] == value,:]
-                    barra8 = px.bar(
-                            df_barra8_filtrada,
-                            x="DATA",
-                            y="ATENDIMENTOS",
-                            color="SENIORIDADE",
-                            color_discrete_map={
-                                'Estagiário': '#6DDCF4',
-                                'Junior': '#699AF2',
-                                'Pleno': '#7C3C95',
-                                'Senior': '#22155C',
-                                'Expert': '#000024'
-                            },
-                            title="Projeção dos Atendimentos por Senioridade nos Próximos 3 Meses"
-                        )
-                    barra8.update_layout(title_x=0.5)
+                    # df_barra8_filtrada = df_barra8.loc[df_barra8['PROJETOS'] == value,:]
+                    # barra8 = px.bar(
+                    #         df_barra8_filtrada,
+                    #         x="PROJETOS",
+                    #         y="CONSULTOR",
+                    #         color="SENIORIDADE",
+                    #         color_discrete_map={
+                    #             'Estagiário': '#6DDCF4',
+                    #             'Junior': '#699AF2',
+                    #             'Pleno': '#7C3C95',
+                    #             'Senior': '#22155C',
+                    #             'Expert': '#000024'
+                    #         },
+                    #         title="Projeção dos Atendimentos por Senioridade nos Próximos 3 Meses"
+                    #     )
+                    # barra8.update_layout(title_x=0.5)
 
 
             return pizza, barra4, linha, barra2, barra5, barra3, barra6, barra7, barra8
